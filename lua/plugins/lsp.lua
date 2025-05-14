@@ -10,6 +10,7 @@ return {
 				"tailwindcss-language-server",
 				"emmet-ls",
 				"html-lsp",
+        "clangd"
 			},
 		},
 		config = function(_, opts)
@@ -105,6 +106,24 @@ return {
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentRangeFormattingProvider = false
 				end,
+			})
+
+        lspconfig["clangd"].setup({
+      o_attach = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end,
+        })
+
+			lspconfig["sourcekit"].setup({
+				-- capabilities = capabilities,
+				capabilities = {
+					workspace = {
+						didChangeWatchedFiles = {
+							dynamicRegistration = true,
+						},
+					},
+				},
 			})
 
 			-- Use LspAttach autocommand to only map the following keys

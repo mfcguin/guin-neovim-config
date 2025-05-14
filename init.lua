@@ -8,7 +8,7 @@ vim.filetype.add({
   },
 })
 
--- Snacks profiler
+-- -- Snacks profiler
 if vim.env.PROF then
   -- example for lazy.nvim
   -- change this to the correct path for your plugin manager

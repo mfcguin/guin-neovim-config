@@ -1,0 +1,226 @@
+{
+  "@autoreleasepool": {
+    "prefix": ["@auto", "@autoreleasepool"],
+    "body": [
+      "@autoreleasepool {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create autoreleasepool block"
+  },
+  "@interface": {
+    "prefix": ["@int", "@interface"],
+    "body": [
+      "@interface ${1:ClassName} : ${2:NSObject}",
+      "$0",
+      "@end"
+    ],
+    "description": "Create interface declaration"
+  },
+  "@implementation": {
+    "prefix": ["@imp", "@implementation"],
+    "body": [
+      "@implementation ${1:ClassName}",
+      "$0",
+      "@end"
+    ],
+    "description": "Create implementation"
+  },
+  "@protocol": {
+    "prefix": ["@pro", "@protocol"],
+    "body": [
+      "@protocol ${1:ProtocolName} ${2:<NSObject>}",
+      "$0",
+      "@end"
+    ],
+    "description": "Create protocol declaration"
+  },
+  "@property": {
+    "prefix": ["@prop", "@property"],
+    "body": [
+      "@property (nonatomic${1:, strong}) ${2:NSString} *${3:propertyName};"
+    ],
+    "description": "Declare property"
+  },
+  "@synthesize": {
+    "prefix": "@syn",
+    "body": "@synthesize ${1:propertyName};",
+    "description": "Synthesize property"
+  },
+  "@dynamic": {
+    "prefix": "@dyn",
+    "body": "@dynamic ${1:propertyName};",
+    "description": "Dynamic property"
+  },
+  "@synchronized": {
+    "prefix": "@sync",
+    "body": [
+      "@synchronized(${1:self}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Synchronized block"
+  },
+  "@try-catch": {
+    "prefix": ["@try", "try"],
+    "body": [
+      "@try {",
+      "\t${1}",
+      "} @catch (NSException *exception) {",
+      "\t${2}",
+      "} @finally {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Try-catch block"
+  },
+  "NSString": {
+    "prefix": "str",
+    "body": "NSString *${1:string} = @\"${2:value}\";",
+    "description": "Create NSString"
+  },
+  "NSMutableString": {
+    "prefix": "mstr",
+    "body": "NSMutableString *${1:string} = [NSMutableString stringWithString:@\"${2:value}\"];",
+    "description": "Create NSMutableString"
+  },
+  "NSArray": {
+    "prefix": "arr",
+    "body": "NSArray *${1:array} = @[${2}];",
+    "description": "Create NSArray"
+  },
+  "NSMutableArray": {
+    "prefix": "marr",
+    "body": "NSMutableArray *${1:array} = [NSMutableArray array];",
+    "description": "Create NSMutableArray"
+  },
+  "NSDictionary": {
+    "prefix": "dict",
+    "body": "NSDictionary *${1:dict} = @{${2:key}: ${3:value}};",
+    "description": "Create NSDictionary"
+  },
+  "NSMutableDictionary": {
+    "prefix": "mdict",
+    "body": "NSMutableDictionary *${1:dict} = [NSMutableDictionary dictionary];",
+    "description": "Create NSMutableDictionary"
+  },
+  "NSNumber": {
+    "prefix": "num",
+    "body": "NSNumber *${1:number} = @${2:0};",
+    "description": "Create NSNumber"
+  },
+  "NSLog": {
+    "prefix": "log",
+    "body": "NSLog(@\"${1:%@}\"${2});",
+    "description": "NSLog statement"
+  },
+  "weak-self": {
+    "prefix": "weak",
+    "body": "__weak typeof(self) weakSelf = self;",
+    "description": "Declare weak self"
+  },
+  "strong-self": {
+    "prefix": "strong",
+    "body": "__strong typeof(weakSelf) strongSelf = weakSelf;",
+    "description": "Declare strong self"
+  },
+  "method-declaration": {
+    "prefix": "-",
+    "body": "- (${1:void})${2:methodName}${3::}${4:(${5:id})${6:param}} {",
+    "description": "Declare instance method"
+  },
+  "class-method-declaration": {
+    "prefix": "+",
+    "body": "+ (${1:void})${2:methodName}${3::}${4:(${5:id})${6:param}} {",
+    "description": "Declare class method"
+  },
+  "dispatch_async": {
+    "prefix": "dispatch_async",
+    "body": [
+      "dispatch_async(dispatch_get_${1:main}_queue(), ^{",
+      "\t$0",
+      "});"
+    ],
+    "description": "GCD dispatch async"
+  },
+  "dispatch_sync": {
+    "prefix": "dispatch_sync",
+    "body": [
+      "dispatch_sync(dispatch_get_${1:main}_queue(), ^{",
+      "\t$0",
+      "});"
+    ],
+    "description": "GCD dispatch sync"
+  },
+  "block-declaration": {
+    "prefix": "block",
+    "body": "${1:returnType} (^${2:blockName})(${3:parameterTypes}) = ^(${4:parameters}) {",
+    "description": "Declare block"
+  },
+  "uiview-animation": {
+    "prefix": "animate",
+    "body": [
+      "[UIView animateWithDuration:${1:0.3} animations:^{",
+      "\t$0",
+      "} completion:^(BOOL finished) {",
+      "\t",
+      "}];"
+    ],
+    "description": "UIView animation block"
+  },
+  "pragma-mark": {
+    "prefix": "mark",
+    "body": "#pragma mark - ${1:Section}",
+    "description": "Add pragma mark"
+  },
+  "import": {
+    "prefix": "import",
+    "body": "#import \"${1:header}.h\"",
+    "description": "Import header file"
+  },
+  "@class": {
+    "prefix": "@class",
+    "body": "@class ${1:ClassName};",
+    "description": "Forward declare a class"
+  },
+  "delegate-property": {
+    "prefix": "delegate",
+    "body": "@property (nonatomic, weak) id<${1:Protocol}> delegate;",
+    "description": "Declare delegate property"
+  },
+  "singleton": {
+    "prefix": "singleton",
+    "body": [
+      "+ (instancetype)shared${1:ClassName} {",
+      "\tstatic ${2:ClassName} *_shared${1:ClassName} = nil;",
+      "\tstatic dispatch_once_t onceToken;",
+      "\tdispatch_once(&onceToken, ^{",
+      "\t\t_shared${1:ClassName} = [[${2:ClassName} alloc] init];",
+      "\t});",
+      "\treturn _shared${1:ClassName};",
+      "}"
+    ],
+    "description": "Create singleton pattern"
+  },
+  "kvo-observing": {
+    "prefix": "observe",
+    "body": [
+      "[${1:object} addObserver:self",
+      "\t\t forKeyPath:@\"${2:keyPath}\"",
+      "\t\t\toptions:NSKeyValueObservingOptionNew",
+      "\t\t\tcontext:NULL];"
+    ],
+    "description": "Add KVO observer"
+  },
+  "notification-observer": {
+    "prefix": "notification",
+    "body": [
+      "[[NSNotificationCenter defaultCenter] addObserver:self",
+      "\t\t\t\t\t\t\t\tselector:@selector(${1:method}:)",
+      "\t\t\t\t\t\t\t\t\tname:${2:NotificationName}",
+      "\t\t\t\t\t\t\t\t  object:nil];"
+    ],
+    "description": "Add notification observer"
+  }
+}
+

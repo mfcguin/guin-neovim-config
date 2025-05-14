@@ -11,6 +11,7 @@ return {
 	keys = {
 		{ "<leader>lr", ":Lspsaga rename<CR>" },
 		{ "<leader>lc", ":Lspsaga code_action<CR>" },
+		{ "gp", ":Lspsaga peek_definition<CR>" },
 		{ "<leader>ld", ":Lspsaga goto_definition<CR>" },
 		{ "<leader>lh", ":Lspsaga hover_doc<CR>" },
 		{ "<leader>lR", ":Lspsaga finder<CR>" },
