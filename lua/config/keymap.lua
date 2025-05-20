@@ -8,7 +8,7 @@ local opts = { noremap = true, silent = true }
 -- 块间移动 (Move between blocks)
 --keymap.set({ "n", "v" }, "H", "^", opts)
 --keymap.set({ "n", "v" }, "L", "g_", opts)
-keymap.set('n','x', '"_x')
+keymap.set({'n','v'},'x', '"_x')
 keymap.set({'n', 'v'}, 'c', '"_c')
 keymap.set({'n', 'v'}, 'C', '"_C')
 keymap.set({'n', 'v'}, 's', '"_s')
