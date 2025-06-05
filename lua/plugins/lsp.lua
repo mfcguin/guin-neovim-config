@@ -10,7 +10,7 @@ return {
 				"tailwindcss-language-server",
 				"emmet-ls",
 				"html-lsp",
-        "clangd"
+				"clangd",
 			},
 		},
 		config = function(_, opts)
@@ -72,11 +72,20 @@ return {
 					client.server_capabilities.documentRangeFormattingProvider = false
 				end,
 			})
-			lspconfig["volar"].setup({
+
+			lspconfig["clangd"].setup({
 				o_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentRangeFormattingProvider = false
 				end,
+			})
+
+			lspconfig["volar"].setup({
+				capabilities = capabilities,
+				-- o_attach = function(client)
+				-- 	client.server_capabilities.documentFormattingProvider = false
+				-- 	client.server_capabilities.documentRangeFormattingProvider = false
+				-- end,
 				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 				init_options = {
 					vue = {
@@ -87,7 +96,58 @@ return {
 							"~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib"
 						),
 					},
+					-- languageFeatures = {
+					-- 	implementation = true,
+					-- 	references = true,
+					-- 	definition = true,
+					-- 	typeDefinition = true,
+					-- 	callHierarchy = true,
+					-- 	hover = true,
+					-- 	rename = true,
+					-- 	renameFileRefactoring = true,
+					-- 	signatureHelp = true,
+					-- 	codeAction = true,
+					-- 	workspaceSymbol = true,
+					-- 	completion = {
+					-- 		defaultTagNameCase = "both",
+					-- 		defaultAttrNameCase = "kebabCase",
+					-- 		getDocumentNameCasesRequest = false,
+					-- 		getDocumentSelectionRequest = false,
+					-- 		-- 启用所有类型的补全
+					-- 		completeFunctionCalls = true,
+					-- 		-- 启用 this. 补全
+					-- 		enabled = true,
+					-- 		include = {
+					-- 			module = true,
+					-- 			property = true,
+					-- 			method = true,
+					-- 			event = true,
+					-- 			constant = true,
+					-- 		},
+					-- 	},
+					-- },
 				},
+				-- settings = {
+				-- 	volar = {
+				-- 		completion = {
+				-- 			-- 自动导入
+				-- 			autoImport = true,
+				-- 			-- 启用详细的补全信息
+				-- 			showAdvancedTips = true,
+				-- 			-- 显示标签建议
+				-- 			tagCasing = "both",
+				-- 		},
+				-- 		codeLens = {
+				-- 			references = true,
+				-- 			pugTools = true,
+				-- 			scriptSetupTools = true,
+				-- 		},
+				-- 		diagnostics = {
+				-- 			-- 启用语义检查
+				-- 			semantic = true,
+				-- 		},
+				-- 	},
+				-- },
 			})
 			lspconfig["cssls"].setup({
 				o_attach = function(client)
@@ -108,12 +168,12 @@ return {
 				end,
 			})
 
-        lspconfig["clangd"].setup({
-      o_attach = function(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-      end,
-        })
+			lspconfig["clangd"].setup({
+				o_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
+				end,
+			})
 
 			lspconfig["sourcekit"].setup({
 				-- capabilities = capabilities,

@@ -14,12 +14,18 @@ return {
 
 		install("stylua")
 		install("prettier")
+    install("clang-format")
 
 		local null_ls = require("null-ls")
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.clang_format.with({
+          filetypes = {
+            "c",
+          }
+        }),
 				-- 其他语言格式化
 				null_ls.builtins.formatting.prettier.with({
 					filetypes = {

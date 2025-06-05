@@ -1,10 +1,11 @@
+
 return {
 	{
 		"saghen/blink.cmp",
 		-- optional: provides snippets for the snippet source
 		dependencies = {
 			--'rafamadriz/friendly-snippets',
-			--'L3MON4D3/LuaSnip', -- snippet engine
+      --'L3MON4D3/LuaSnip', -- snippet engine
 			"nvim-tree/nvim-web-devicons",
 			"onsails/lspkind.nvim",
 			"fang2hou/blink-copilot",
@@ -54,7 +55,7 @@ return {
 				["<C-u>"] = { "scroll_documentation_up", "fallback" },
 				["<C-d>"] = { "scroll_documentation_down", "fallback" },
 
-				["<Tab>"] = {
+			["<Tab>"] = {
 					function(cmp)
 						return cmp.accept()
 					end,
@@ -155,11 +156,11 @@ return {
 					lsp = {
 						-- Default
 						-- Filter text items from the LSP provider, since we have the buffer provider for that
-						-- transform_items = function(_, items)
-						-- 	return vim.tbl_filter(function(item)
-						-- 		return item.kind ~= require("blink.cmp.types").CompletionItemKind.Text
-						-- 	end, items)
-						-- end,
+						transform_items = function(_, items)
+							return vim.tbl_filter(function(item)
+								return item.kind ~= require("blink.cmp.types").CompletionItemKind.Text
+							end, items)
+						end,
 						score_offset = 60,
 						fallbacks = { "buffer" },
 					},

@@ -163,7 +163,7 @@ return {
       { "gr", function() require("snacks").picker.lsp_references() end, desc = "[Snacks] References" },
       { "gI", function() require("snacks").picker.lsp_implementations() end, desc = "[Snacks] Goto implementation" },
       { "gy", function() require("snacks").picker.lsp_type_definitions() end, desc = "[Snacks] Goto t[y]pe definition" },
-      { "<leader>ss", function() require("snacks").picker.lsp_symbols() end, desc = "[Snacks] LSP symbols" },
+      { "<D-S-o>", function() require("snacks").picker.lsp_symbols() end, desc = "[Snacks] LSP symbols" },
       { "<leader>sS", function() require("snacks").picker.lsp_workspace_symbols() end, desc = "[Snacks] LSP workspace symbols" },
       -- Words
       { "]]", function() require("snacks").words.jump(vim.v.count1) end, desc = "[Snacks] Next Reference", mode = { "n", "t" } },

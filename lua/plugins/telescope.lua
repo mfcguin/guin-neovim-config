@@ -38,11 +38,11 @@ return {
 		{ ",k", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
 		{ ",m", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
 	--	{ ";so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-		{ ",r", "<cmd>Telescope resume<cr>", desc = "Resume" },
+		--{ ",r", "<cmd>Telescope resume<cr>", desc = "Resume" },
 
     -- LSP 相关
 		{
-			";s",
+			",s",
 			function()
 				require("telescope.builtin").lsp_document_symbols({
 					symbols = { "Function", "Method", "Class", "Interface", "Variable" },
@@ -52,7 +52,7 @@ return {
 		},
 
     {
-			";S",
+			",S",
 			function()
 				require("telescope.builtin").lsp_dynamic_workspace_symbols({
 					symbols = { "Function", "Method", "Class", "Interface", "Variable" },
