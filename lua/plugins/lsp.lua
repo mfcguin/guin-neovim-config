@@ -67,6 +67,16 @@ return {
 			})
 
 			lspconfig["ts_ls"].setup({
+        -- init_options = {
+        --   plugins = {
+        --     {
+        --       name = "@vue/typescript-plugin",
+        --       location = "~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/@vue/language-server",
+        --       languages = {"javascript", "typescript", "vue"}
+        --     }
+        --   }
+        -- },
+        -- filetypes = {"javascript", "typescript", "vue"},
 				o_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentRangeFormattingProvider = false
